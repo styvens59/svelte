@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import { fly } from 'svelte/transition';
 
     export let name;
     export let purchased;
@@ -19,7 +20,7 @@
     }
 </script>
 
-<li><label><input type="checkbox" bind:checked="{purchased}" on:click="{handleClick}">
+<li transition:fly={{ y:200, duration:1500 }}><label><input type="checkbox" bind:checked="{purchased}" on:click="{handleClick}">
     <span class:purchased="{purchased}">{name}</span>
 </label></li>
 

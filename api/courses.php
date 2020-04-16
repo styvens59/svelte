@@ -24,6 +24,6 @@ function generate_courses($amount) {
     return $articles;
 }
 
-$courses = json_encode(generate_courses(30));
+$courses = json_encode(generate_courses(15));
 
 echo $courses;
