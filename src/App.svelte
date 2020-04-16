@@ -7,7 +7,6 @@
 	onMount(async function () {
 		const response = await fetch(apiURL);
 		data = await response.json();
-		alert(data[0]);
 	});
 </script>
 
@@ -16,7 +15,13 @@
 	<h1>Ma liste de courses</h1>
 
 	<ul>
-
+		{#if data.length === 0}
+			<li>Chargement...</li>
+		{:else}
+			{#each data as item}
+				<li>{item}</li>
+			{/each}
+		{/if}
 	</ul>
 
 </div>
@@ -28,7 +33,5 @@
 		width: 80%;
 		text-align: center;
 	}
-
-
 
 </style>
