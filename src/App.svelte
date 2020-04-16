@@ -1,30 +1,34 @@
 <script>
-	export let name;
+	import { onMount } from "svelte";
+
+	const apiURL = "http://localhost:63342/svelte/api/courses.php"
+	let data = [];
+
+	onMount(async function () {
+		const response = await fetch(apiURL);
+		data = await response.json();
+		alert(data[0]);
+	});
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<div id="app">
+
+	<h1>Ma liste de courses</h1>
+
+	<ul>
+
+	</ul>
+
+</div>
 
 <style>
-	main {
+
+	#app {
+		margin: auto;
+		width: 80%;
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+
 </style>
